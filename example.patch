@@ -1,0 +1,74 @@
+import {requireCocoa} from './objcDefine.js'
+const {ViewController,UIColor}= requireCocoa('ViewController','UIColor');
+
+ViewController.renewInstanceMethods({
+  clickIt : function(){
+    let weakSelf = self.weakify();
+    self.click.rac__signalForControlEvents(1 << 6).subscribeNext((x: id):void => {
+      weakSelf.view.backgroundColor = UIColor.orangeColor();
+    });
+  }
+});
+
+
+// LuSubScriptTest.renewInstanceMethods({scriptTest:function(num){
+//     var a = oc_super;
+//     self.aa = oc_super.ttt();
+//     let c ;
+//     c.a.d = c.a.b;
+//   return original() ;},
+//    tableView_numberOfRowsInSection:function(tableView,section){
+//        return original() + 400;
+//    }
+// });
+
+
+// let a = UITableView.alloc().initWithFrame({x:200,y:300,width:200,height:400});
+// LuSubScriptTest.alloc().init().tableView_numberOfRowsInSection(a,20);
+// a.request(function(a:undefined,b:Int):double{},yangjie:(string,string) => int,(num1:string, num2:double) => { return num1 + num2; });
+//  //a.request(b,(num1:string, num2:double) => { return num1 + num2; });
+ 
+//  class LuPatch{
+//      constructor(x,y){
+//          this.x = x;
+//          this.y = y;
+//      }
+
+//      patchResult(){
+//          console.log("test",this.x,this.y);
+//      }
+//  }
+
+//  new LuPatch(20,30).patchResult()
+// function hookTableView_numberOfRowsInSection(tableView:id,section:Int):Int{ } ; //声明方法，函数的命名与JSPatch OC函数声明对应
+// UITableView.createInstanceMethods(hookTableView_numberOfRowsInSection) //函数名作为变量传入
+
+// let test = LuScriptTest.alloc().init();
+// test.arr =[1,2,3,4];
+// let weakTest = test.weakify();
+// console.log(weakTest.arr[2]);
+// test.arr[2] = 10; 
+// console.log(test.arr[1]);
+//test.dic['d'] = 20;
+
+//console.log(test.arr.getOrigin());
+
+//console.log(LuKit);
+
+
+
+// LuScriptTest.renewInstanceMethods({
+//  testBlock: function(){
+//    return (a:id,b:NSInteger):int => { 
+//     console.log("王卫是天才"); 
+//     console.log(a,b); 
+//     return 300;};
+//  }
+// })
+// const scriptTest = LuScriptTest.alloc().init();
+// let func = scriptTest.testBlock();
+// let ret = func('王卫',20);
+// console.log('颜小强' + ret);
+// scriptTest.func(func);
+
+

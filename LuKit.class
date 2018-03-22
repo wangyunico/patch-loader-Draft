@@ -1,0 +1,7 @@
+import {requireCocoa} from './objcDefine.js'
+//import  {proxy} from 'proxy-polyfill'
+const {LuScriptTest,LuSubScriptTest,UITableView}= requireCocoa('LuScriptTest','LuSubScriptTest','UITableView');
+let test = LuScriptTest.alloc().init();
+test.arr =[1,2,3,4];
+let weakTest = test.weakify();
+console.log(weakTest.arr[2]);
